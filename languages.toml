@@ -1,0 +1,31 @@
+[[language]]
+name = "python"
+roots = ["pyproject.toml"]
+auto-format = true
+# formatter = { command = "ruff", args = ["format", "-"] }
+
+[language.config]
+# configurationSources = ["flake8"]
+plugins.black.enabled = false
+plugins.mypy.enabled = true
+plugins.autopep8.enabled = false
+plugins.yapf.enabled = false
+# plugins.jedi.environment = "venv/"
+# plugins.pycodestyle.maxLineLength = 100
+plugins.flake8.enabled = false
+plugins.pyflakes.enabled = false
+plugins.pycodestyle.enabled = false
+plugins.mccabe.enabled = false
+# plugins.rope_completion.enabled = true
+# plugins.rope_completion.eager = true
+plugins.ruff.enabled = true
+plugins.ruff.formatEnabled = true
+
+[[language]]
+name = "typescript"
+auto-format = true
+indent = { tab-width = 4, unit = "\t" }
+
+[[language]]
+name = "go"
+config = { "formatting.gofumpt" = true }
