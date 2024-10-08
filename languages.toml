@@ -18,7 +18,10 @@ plugins.pycodestyle.enabled = false
 plugins.mccabe.enabled = false
 plugins.ruff.enabled = true
 plugins.ruff.formatEnabled = false
-pylsp.plugins.rope_autoimport.enabled = true
+pylsp.plugins.rope_rename.enabled = false
+pylsp.plugins.jedi_rename.enabled = false
+plugins.pylsp_rope.rename = true
+plugins.rope_autoimport.enabled = true
 
 [language.formatter]
 command = "ruff"
