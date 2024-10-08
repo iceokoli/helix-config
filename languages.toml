@@ -1,31 +1,38 @@
+[language-server.gpt]
+command = "helix-gpt-deno"
+args = ["--logFile", "/tmp/hx-gpt.log", "--handler", "copilot", "--copilotApiKey", "<api_key>"]
+
 [[language]]
 name = "python"
 roots = ["pyproject.toml"]
 auto-format = true
-# formatter = { command = "ruff", args = ["format", "-"] }
+language-servers = ["pylsp", "gpt"]
 
-[language.config]
-# configurationSources = ["flake8"]
+[language-server.pylsp.config]
 plugins.black.enabled = false
 plugins.mypy.enabled = true
 plugins.autopep8.enabled = false
 plugins.yapf.enabled = false
-# plugins.jedi.environment = "venv/"
-# plugins.pycodestyle.maxLineLength = 100
-plugins.flake8.enabled = false
 plugins.pyflakes.enabled = false
 plugins.pycodestyle.enabled = false
 plugins.mccabe.enabled = false
-# plugins.rope_completion.enabled = true
-# plugins.rope_completion.eager = true
 plugins.ruff.enabled = true
-plugins.ruff.formatEnabled = true
+plugins.ruff.formatEnabled = false
+pylsp.plugins.rope_autoimport.enabled = true
+
+[language.formatter]
+command = "ruff"
+args = ["format", "-"]
 
 [[language]]
 name = "typescript"
 auto-format = true
 indent = { tab-width = 4, unit = "\t" }
+language-servers = [ "typescript-language-server", "gpt"]
 
 [[language]]
 name = "go"
-config = { "formatting.gofumpt" = true }
+language-servers = [ "gopls", "gpt"]
+
+[language-server.gopls.config]
+gofumpt = true
